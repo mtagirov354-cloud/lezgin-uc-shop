@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lezgin UC Shop - Премиум пополнение PUBG Mobile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --lezgin-red: #ff0000;
+            --lezgin-green: #008000;
+            --lezgin-gold: #ffd700;
+            --lezgin-blue: #0066cc;
+            --lezgin-dark: #0a0a1a;
+            --lezgin-darker: #050510;
+            --card-bg: rgba(16, 18, 40, 0.9);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --gradient-primary: linear-gradient(135deg, var(--lezgin-red) 0%, var(--lezgin-gold) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--lezgin-green) 0%, var(--lezgin-blue) 100%);
+            --gradient-success: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            --shadow-glow: 0 0 20px rgba(255, 0, 0, 0.3);
+            --shadow-glow-green: 0 0 20px rgba(0, 128, 0, 0.3);
+        }
+
+        body {
+            background: var(--lezgin-dark);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .lezgin-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 128, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid var(--lezgin-red);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 32px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-btn {
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            border: 1px solid transparent;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-btn:hover::before {
+            left: 0;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--lezgin-red);
+            box-shadow: var(--shadow-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 180px 20px 100px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--lezgin-red), var(--lezgin-gold), var(--lezgin-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textShine 3s ease-in-out infinite;
+        }
+
+        @keyframes textShine {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(20deg); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.4em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.6;
+            color: #a0a0c0;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--lezgin-red);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--lezgin-gold);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .feature-icon {
+            font-size: 45px;
+            margin-bottom: 20px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Payment Section */
+        .payment-section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 2px solid var(--lezgin-green);
+            backdrop-filter: blur(10px);
+        }
+
+        .payment-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-display {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid var(--lezgin-gold);
+            font-family: 'Courier New', monospace;
+            font-size: 1.4em;
+            letter-spacing: 3px;
+            text-align: center;
+            margin: 20px 0;
+            color: var(--lezgin-gold);
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.2em;
+            margin-bottom: 60px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 2px solid var(--lezgin-red);
+            backdrop-filter: blur(15px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .price-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--lezgin-gold);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .price-card.featured {
+            border: 3px solid var(--lezgin-gold);
+            transform: scale(1.05);
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(255, 215, 0, 0.1) 100%);
+        }
+
+        .price-card.featured:hover {
+            transform: scale(1.08) translateY(-10px);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 8px 45px;
+            font-size: 0.9em;
+            font-weight: bold;
+            transform: rotate(45deg);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .uc-amount {
+            font-size: 2.8em;
+            font-weight: 800;
+            margin: 25px 0;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .price {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin: 20px 0;
+            color: var(--lezgin-green);
+        }
+
+        .buy-btn {
+            background: var(--gradient-success);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            border-radius: 30px;
+            font-size: 1.3em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .buy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.4);
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 60px 0;
+            border: 2px solid var(--lezgin-red);
+            backdrop-filter: blur(20px);
+            display: none;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--lezgin-red);
+        }
+
+        .admin-title {
+            font-size: 2.5em;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .admin-section {
+            margin-bottom: 40px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--lezgin-red);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid var(--lezgin-red);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--lezgin-gold);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .stat-number {
+            font-size: 2.8em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+            border: 2px solid var(--lezgin-red);
+        }
+
+        .admin-table th,
+        .admin-table td {
+            padding: 18px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--lezgin-red);
+        }
+
+        .admin-table th {
+            background: rgba(255, 0, 0, 0.1);
+            color: var(--lezgin-red);
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .admin-table tr:hover {
+            background: rgba(255, 0, 0, 0.05);
+        }
+
+        .status-pending { color: var(--lezgin-gold); font-weight: 600; }
+        .status-completed { color: var(--lezgin-green); font-weight: 600; }
+        .status-cancelled { color: #ff4444; font-weight: 600; }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .btn-primary { 
+            background: var(--gradient-primary);
+            color: white;
+        }
+        .btn-success { 
+            background: var(--gradient-success);
+            color: white;
+        }
+        .btn-danger { 
+            background: var(--gradient-secondary);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Modals - ИСПРАВЛЕННЫЙ CSS */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 16, 0.95);
+            backdrop-filter: blur(10px);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            margin: 2% auto;
+            padding: 35px;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            border: 2px solid var(--lezgin-red);
+            box-shadow: var(--shadow-glow);
+            animation: modalAppear 0.4s ease-out;
+        }
+
+        @keyframes modalAppear {
+            from { opacity: 0; transform: scale(0.8) translateY(-50px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--lezgin-red);
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: var(--lezgin-gold);
+        }
+
+        /* Увеличиваем отступ перед кнопкой оплаты */
+        .btn-success[onclick="processOrder()"] {
+            margin-top: 40px !important;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Уменьшаем максимальную высоту превью изображения */
+        #preview-image {
+            max-width: 100%;
+            max-height: 150px;
+            border-radius: 8px;
+            border: 1px solid var(--lezgin-green);
+        }
+
+        /* Уменьшаем отступы в форме */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        /* Делаем поле файла более компактным */
+        input[type="file"] {
+            padding: 12px !important;
+        }
+
+        /* Уменьшаем отступ в выбранном пакете */
+        #selected-package {
+            padding: 15px !important;
+            margin: 8px 0 !important;
+            font-size: 1.1em !important;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            margin-top: 80px;
+            border-top: 2px solid var(--lezgin-red);
+            color: #a0a0c0;
+            background: rgba(5, 5, 16, 0.8);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 35px 0;
+        }
+
+        .social-links a {
+            color: var(--lezgin-red);
+            font-size: 26px;
+            transition: all 0.3s ease;
+            padding: 15px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--lezgin-red);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            color: var(--lezgin-gold);
+            background: var(--gradient-primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 25px;
+            padding: 22px;
+            background: var(--gradient-success);
+            color: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow-glow);
+            z-index: 3000;
+            transform: translateX(400px);
+            transition: transform 0.4s ease;
+            border: 1px solid var(--lezgin-green);
+            backdrop-filter: blur(10px);
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.error {
+            background: var(--gradient-primary);
+        }
+
+        /* Стили для загрузки файла */
+        .form-control:focus {
+            outline: none;
+            border-color: var(--lezgin-gold) !important;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px dashed var(--lezgin-red);
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 1em;
+        }
+
+        input[type="file"]::-webkit-file-upload-button {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-right: 15px;
+            font-weight: 600;
+        }
+
+        input[type="file"]::-webkit-file-upload-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero-title {
+                font-size: 2.8em;
+            }
+
+            .price-card.featured {
+                transform: none;
+            }
+
+            .price-card.featured:hover {
+                transform: translateY(-10px);
+            }
+
+            .modal-content {
+                padding: 25px;
+                margin: 5% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background -->
+    <div class="lezgin-bg"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-mountain"></i>
+                LEZGIN UC SHOP
+            </div>
+            <nav>
+                <a href="#prices" class="nav-btn"><i class="fas fa-tags"></i> Цены</a>
+                <a href="#admin" class="nav-btn" onclick="showAdminPanel()"><i class="fas fa-cog"></i> Админ</a>
+                <a href="#support" class="nav-btn"><i class="fas fa-headset"></i> Поддержка</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">LEZGIN UC SHOP</h1>
+                <p class="hero-subtitle">Премиальное пополнение UC для PUBG Mobile с гарантией доставки за 3-5 минут. Надежность и качество от лезгинских геймеров!</p>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>3-5 Минут</h3>
+                        <p>Максимальная скорость доставки</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>100% Безопасно</h3>
+                        <p>Гарантия сохранности аккаунта</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>Премиум Качество</h3>
+                        <p>Лучший сервис от лезгинских геймеров</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Section -->
+        <div class="payment-section">
+            <h3 class="payment-title"><i class="fas fa-credit-card"></i> Оплата картой</h3>
+            <p style="margin-bottom: 20px; color: #a0a0c0;">Для оплаты переведите точную сумму на карту:</p>
+            <div class="card-display">2200 7020 0808 2617</div>
+            <p style="font-size: 0.95em; color: #8888aa;">После оплаты нажмите "Я оплатил" в форме заказа</p>
+        </div>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section" id="prices">
+            <h2 class="section-title">Выберите пакет UC</h2>
+            <div class="pricing-grid" id="pricing-grid">
+                <!-- Price cards will be generated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Admin Panel -->
+        <section id="admin-panel" class="admin-panel">
+            <div class="admin-header">
+                <h2 class="admin-title">Панель управления LEZGIN UC</h2>
+                <button class="btn btn-primary" onclick="loadAdminData()">
+                    <i class="fas fa-sync-alt"></i> Обновить
+                </button>
+                <button class="btn btn-danger" onclick="hideAdminPanel()">
+                    <i class="fas fa-times"></i> Закрыть
+                </button>
+            </div>
+
+            <!-- Stats -->
+            <div class="admin-section">
+                <h3 style="margin-bottom: 20px; color: var(--lezgin-red);">
+                    <i class="fas fa-chart-network"></i> Статистика магазина
+                </h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-orders">0</div>
+                        <div>Всего заказов</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="pending-orders">0</div>
+                        <div>Ожидают выполнения</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="today-revenue">0 ₽</div>
+                        <div>Выручка сегодня</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-revenue">0 ₽</div>
+                        <div>Общая выручка</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Management -->
+            <div class="admin-section">
+                <h3 style="margin-bottom: 20px; color: var(--lezgin-red);">
+                    <i class="fas fa-shopping-cart"></i> Управление заказами
+                </h3>
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Player ID</th>
+                                <th>UC</th>
+                                <th>Сумма</th>
+                                <th>Статус</th>
+                                <th>Время</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table">
+                            <!-- Orders will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3 style="margin-bottom: 20px; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    LEZGIN UC SHOP
+                </h3>
+                <p>Премиальный сервис пополнения UC от лезгинских геймеров. Качество и надежность!</p>
+                
+                <div class="social-links">
+                    <a href="https://t.me/LEZGImaga05" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="https://t.me/rrrrnn05" target="_blank"><i class="fab fa-telegram"></i></a>
+                </div>
+                
+                <p>© 2024 LEZGIN UC SHOP. Все права защищены.</p>
+                <p style="margin-top: 15px; font-size: 0.9em; color: #666688;">
+                    Техническая поддержка: @rrrrnn05
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 30px; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                <i class="fas fa-lock"></i> Доступ к админке
+            </h2>
+            <div class="form-group">
+                <label style="color: var(--lezgin-red); margin-bottom: 10px; display: block;">Telegram юзернейм</label>
+                <input type="text" class="form-control" id="admin-username" placeholder="@username" style="width: 100%; padding: 15px; border-radius: 12px; border: 2px solid var(--lezgin-red); background: rgba(0, 0, 0, 0.3); color: white; font-size: 1em;">
+            </div>
+            <button class="btn btn-primary" style="width: 100%; padding: 16px; margin-top: 20px;" onclick="checkAdminAccess()">
+                <i class="fas fa-sign-in-alt"></i> Войти в систему
+            </button>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrderModal()">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 30px; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                <i class="fas fa-shopping-cart"></i> Оформление заказа
+            </h2>
+            <div class="form-group">
+                <label style="color: var(--lezgin-red); margin-bottom: 10px; display: block;">Ваш Player ID</label>
+                <input type="text" class="form-control" id="player-id" placeholder="Введите ваш ID в PUBG Mobile" style="width: 100%; padding: 15px; border-radius: 12px; border: 2px solid var(--lezgin-red); background: rgba(0, 0, 0, 0.3); color: white; font-size: 1em;">
+            </div>
+            <div class="form-group">
+                <label style="color: var(--lezgin-red); margin-bottom: 10px; display: block;">Пакет UC</label>
+                <div id="selected-package" style="padding: 15px; background: rgba(0, 0, 0, 0.3); border-radius: 12px; margin: 8px 0; text-align: center; font-size: 1.1em; font-weight: 600; border: 2px solid var(--lezgin-red);"></div>
+            </div>
+            <div class="form-group">
+                <label style="color: var(--lezgin-red); margin-bottom: 10px; display: block;">
+                    <i class="fas fa-receipt"></i> Чек об оплате
+                </label>
+                <input type="file" id="receipt-file" accept="image/*,.pdf" 
+                       style="width: 100%; padding: 12px; border-radius: 12px; border: 2px dashed var(--lezgin-red); background: rgba(0, 0, 0, 0.3); color: white; font-size: 1em;">
+                <div id="file-preview" style="margin-top: 10px; display: none;">
+                    <img id="preview-image" style="max-width: 100%; max-height: 150px; border-radius: 8px; border: 1px solid var(--lezgin-green);">
+                </div>
+                <p style="font-size: 0.9em; color: #8888aa; margin-top: 10px;">
+                    Сделайте скриншот чека из банковского приложения и загрузите его здесь
+                </p>
+            </div>
+            <div class="form-group">
+                <label style="color: var(--lezgin-red); margin-bottom: 10px; display: block;">Номер карты для оплаты</label>
+                <div class="card-display" style="font-size: 1.2em;">2200 7020 0808 2617</div>
+                <p style="font-size: 0.9em; color: #8888aa; margin-top: 10px;">Переведите точную сумму на эту карту</p>
+            </div>
+            <button class="btn btn-success" style="width: 100%; padding: 18px; font-size: 1.2em; margin-top: 40px;" onclick="processOrder()">
+                <i class="fas fa-check-circle"></i> Я оплатил, отправить заказ
+            </button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <i class="fas fa-check"></i> <span id="notification-text">Заказ успешно оформлен!</span>
+    </div>
+
+    <script>
+        const API_BASE = '/api';
+        const ADMIN_USERNAMES = ['LEZGImaga05', 'rrrrnn05'];
+        
+        let currentOrder = null;
+        let prices = {};
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPrices();
+            
+            // Добавляем обработчик загрузки файла
+            document.getElementById('receipt-file').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                const preview = document.getElementById('file-preview');
+                const previewImage = document.getElementById('preview-image');
+                
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewImage.src = e.target.result;
+                        preview.style.display = 'block';
+                    }
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.style.display = 'none';
+                }
+            });
+        });
+
+        // API functions
+        async function apiCall(endpoint, options = {}) {
+            try {
+                const response = await fetch(`${API_BASE}${endpoint}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...options.headers
+                    },
+                    ...options
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                return await response.json();
+            } catch (error) {
+                console.error('API Error:', error);
+                showNotification('Ошибка соединения с сервером', true);
+                throw error;
+            }
+        }
+
+        async function loadPrices() {
+            try {
+                prices = await apiCall('/prices');
+                generatePriceCards();
+            } catch (error) {
+                // Fallback prices
+                prices = {
+                    '60': 99,
+                    '120': 220,
+                    '325': 475,
+                    '385': 550,
+                    '660': 890,
+                    '720': 979,
+                    '985': 1300,
+                    '1320': 1850,
+                    '1800': 2200
+                };
+                generatePriceCards();
+            }
+        }
+
+        async function loadStats() {
+            try {
+                const stats = await apiCall('/stats');
+                document.getElementById('total-orders').textContent = stats.total_orders;
+                document.getElementById('pending-orders').textContent = stats.pending_orders;
+                document.getElementById('today-revenue').textContent = stats.today_revenue + ' ₽';
+                document.getElementById('total-revenue').textContent = stats.total_revenue + ' ₽';
+            } catch (error) {
+                showNotification('Ошибка загрузки статистики', true);
+            }
+        }
+
+        async function loadOrders() {
+            try {
+                const orders = await apiCall('/orders');
+                displayOrders(orders);
+            } catch (error) {
+                showNotification('Ошибка загрузки заказов', true);
+            }
+        }
+
+        // Generate price cards
+        function generatePriceCards() {
+            const grid = document.getElementById('pricing-grid');
+            grid.innerHTML = '';
+
+            Object.entries(prices).forEach(([uc, price]) => {
+                const isFeatured = uc === '660';
+                
+                const card = document.createElement('div');
+                card.className = `price-card ${isFeatured ? 'featured' : ''}`;
+                card.innerHTML = `
+                    ${isFeatured ? '<div class="featured-badge">ВЫГОДА</div>' : ''}
+                    <div class="uc-amount">${uc} UC</div>
+                    <div class="price">${price} ₽</div>
+                    <p style="margin: 20px 0; color: #a0a0c0; font-size: 0.95em;">Мгновенная доставка за 3-5 минут</p>
+                    <button class="buy-btn" onclick="openOrderModal('${uc}', ${price})">
+                        <i class="fas fa-bolt"></i> ${isFeatured ? 'ВЫГОДНЫЙ ВЫБОР' : 'КУПИТЬ СЕЙЧАС'}
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Admin panel functions
+        function showAdminPanel() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        function hideAdminPanel() {
+            document.getElementById('admin-panel').style.display = 'none';
+        }
+
+        async function loadAdminData() {
+            await loadStats();
+            await loadOrders();
+        }
+
+        function checkAdminAccess() {
+            const username = document.getElementById('admin-username').value.trim().replace('@', '');
+            if (ADMIN_USERNAMES.includes(username)) {
+                document.getElementById('loginModal').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'block';
+                loadAdminData();
+                showNotification('Доступ к админ-панели разрешен');
+            } else {
+                showNotification('Доступ запрещен. Только для @LEZGImaga05 и @rrrrnn05', true);
+            }
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        // Order management
+        function openOrderModal(uc, price) {
+            currentOrder = { uc, price };
+            document.getElementById('selected-package').textContent = `${uc} UC - ${price} ₽`;
+            document.getElementById('orderModal').style.display = 'block';
+            document.getElementById('player-id').value = '';
+            document.getElementById('receipt-file').value = '';
+            document.getElementById('file-preview').style.display = 'none';
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+            currentOrder = null;
+        }
+
+        async function processOrder() {
+            const playerId = document.getElementById('player-id').value.trim();
+            const fileInput = document.getElementById('receipt-file');
+            
+            if (!playerId) {
+                showNotification('Введите ваш Player ID', true);
+                return;
+            }
+
+            if (!fileInput.files[0]) {
+                showNotification('Загрузите чек об оплате', true);
+                return;
+            }
+
+            try {
+                // Создаем FormData для отправки файла
+                const formData = new FormData();
+                formData.append('playerId', playerId);
+                formData.append('uc', currentOrder.uc);
+                formData.append('price', currentOrder.price);
+                formData.append('receipt', fileInput.files[0]);
+
+                const response = await fetch('/api/order', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showNotification('Заказ принят! Чек отправлен администратору.');
+                    closeOrderModal();
+                    
+                    // Обновляем админку если открыта
+                    if (document.getElementById('admin-panel').style.display === 'block') {
+                        await loadAdminData();
+                    }
+                }
+            } catch (error) {
+                console.error('Order Error:', error);
+                showNotification('Ошибка при создании заказа', true);
+            }
+        }
+
+        async function updateOrderStatus(orderId, status) {
+            try {
+                await apiCall('/update_order', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        orderId: orderId,
+                        status: status
+                    })
+                });
+
+                showNotification(`Статус заказа ${orderId} обновлен`);
+                await loadAdminData();
+            } catch (error) {
+                showNotification('Ошибка обновления заказа', true);
+            }
+        }
+
+        function displayOrders(orders) {
+            const tbody = document.getElementById('orders-table');
+            tbody.innerHTML = '';
+
+            orders.forEach(order => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${order.id}</strong></td>
+                    <td><code>${order.playerId}</code></td>
+                    <td>${order.uc} UC</td>
+                    <td>${order.price} ₽</td>
+                    <td class="status-${order.status}">${getStatusText(order.status)}</td>
+                    <td style="color: #a0a0c0; font-size: 0.9em;">${order.timestamp}</td>
+                    <td>
+                        ${order.status === 'pending' ? 
+                            `<button class="btn btn-success" onclick="updateOrderStatus('${order.id}', 'completed')">
+                                <i class="fas fa-check"></i> Выполнить
+                            </button>` : 
+                            ''
+                        }
+                        <button class="btn btn-danger" onclick="updateOrderStatus('${order.id}', 'cancelled')">
+                            <i class="fas fa-times"></i> Отменить
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function getStatusText(status) {
+            const statusMap = {
+                'pending': '⏳ Ожидает',
+                'completed': '✅ Выполнен',
+                'cancelled': '❌ Отменен'
+            };
+            return statusMap[status] || status;
+        }
+
+        // Notification system
+        function showNotification(message, isError = false) {
+            const notification = document.getElementById('notification');
+            const text = document.getElementById('notification-text');
+            
+            text.textContent = message;
+            notification.className = `notification ${isError ? 'error' : ''} show`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
